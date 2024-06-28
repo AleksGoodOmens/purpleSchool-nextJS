@@ -1,0 +1,10 @@
+{
+	"useTabs": true,
+	"tabWidth": 2,
+	"singleAttributePerLine": true,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"bracketSameLine": true,
+	"jsxBracketSameLine": true,
+	"plugins": ["prettier-plugin-css-order"]
+}
