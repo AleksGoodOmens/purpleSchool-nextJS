@@ -1,9 +1,10 @@
 :root {
 	--primary: #3b434e;
+	--primary-200: #b3c0d9;
 	--secondary: #fff;
 	--accent: #7653fc;
-	--succes-200: #c8f8e4;
-	--succes-400: #1dc37e;
+	--success-200: #c8f8e4;
+	--success-400: #1dc37e;
 	--error: #de0000;
 	--ghost-200: #ebebeb;
 	--ghost-400: #a4a4a4;

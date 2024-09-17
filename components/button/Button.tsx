@@ -1,10 +1,6 @@
-'use client';
 import cn from 'classnames';
-
 import { ButtonProps } from './button.props';
-
 import styles from './button.module.scss';
-
 import ArrowIconSvg from './arrow.svg';
 function Button({
 	children,

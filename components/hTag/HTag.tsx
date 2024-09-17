@@ -1,5 +1,3 @@
-'use client';
-
 import { HTagProps } from './hTag.props';
 
 import styles from './hTag.module.scss';
