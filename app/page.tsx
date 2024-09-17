@@ -1,7 +1,10 @@
+import { HTag } from '@/components';
+import Head from 'next/head';
+
 export default function Home() {
 	return (
 		<main>
-			<h1>Мой блог</h1>
+			<HTag tag="h1">Мой блог</HTag>
 		</main>
 	);
 }

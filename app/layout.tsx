@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter, Roboto } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 import './globals.css';
 
-const roboto = Roboto({ weight: '400' });
+const openSans = Open_Sans({ subsets: ['cyrillic', 'latin'] });
 
 export const metadata: Metadata = {
-	title: 'Мой Блог',
+	title: 'Мой Блог - главная страница',
 	description: 'Создано мною в учебных целях'
 };
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ru">
-			<body className={roboto.className}>{children}</body>
+			<body className={openSans.className}>{children}</body>
 		</html>
 	);
 }
