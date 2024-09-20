@@ -5,7 +5,7 @@ import './globals.css';
 const openSans = Open_Sans({ subsets: ['cyrillic', 'latin'] });
 
 export const metadata: Metadata = {
-	title: 'Мой Блог - главная страница',
+	title: 'OWLtop - главная страница',
 	description: 'Создано мною в учебных целях'
 };
 

@@ -1,4 +1,5 @@
 import { Button, HTag, PTag, Tag } from '@/components';
+import { Stars } from '@/components/stars/Stars';
 
 function page() {
 	return (
@@ -34,7 +35,7 @@ function page() {
 					ghost with arrow
 				</Button>
 			</div>
-			<div style={{ display: 'flex', gap: '1rem' }}>
+			<div style={{ display: 'grid', gap: '1rem' }}>
 				<PTag appearance="s">
 					paragraph small Lorem, ipsum dolor sit amet consectetur adipisicing
 					elit. Quibusdam, voluptatum!
@@ -57,8 +58,17 @@ function page() {
 					href="google.com">
 					Подготовка макетов
 				</Tag>
-				<Tag bg="success">-10 000 ₽ </Tag>
+				<Tag bg="success"> -10 000 ₽ </Tag>
 				<Tag bg="error">hh.ru</Tag>
+			</div>
+			<div>
+				<HTag tag="h4">Rating</HTag>
+				<Stars rating={0} />
+				<Stars rating={1} />
+				<Stars rating={2} />
+				<Stars rating={3} />
+				<Stars rating={4} />
+				<Stars rating={5} />
 			</div>
 		</div>
 	);
