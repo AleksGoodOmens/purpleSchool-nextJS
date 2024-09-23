@@ -1,7 +1,12 @@
-.filled {
-	fill: var(--accent);
+.stars {
+	.star {
+		transition: all 0.3s;
+		margin-right: 5px;
+		&.filled {
+			fill: var(--accent);
+		}
+	}
 }
-
-.star {
-	margin-right: 5px;
+.editable {
+	cursor: pointer;
 }

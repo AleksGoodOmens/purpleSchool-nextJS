@@ -1,7 +1,11 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+'use client';
 import { Button, HTag, PTag, Tag } from '@/components';
 import { Stars } from '@/components/stars/Stars';
+import { useState } from 'react';
 
 function page() {
+	const [rating, setRating] = useState(3); //test
 	return (
 		<div
 			style={{
@@ -63,12 +67,14 @@ function page() {
 			</div>
 			<div>
 				<HTag tag="h4">Rating</HTag>
-				<Stars rating={0} />
-				<Stars rating={1} />
-				<Stars rating={2} />
+				editable
+				<Stars
+					rating={rating}
+					setRating={setRating}
+					isEditable
+				/>
+				basic
 				<Stars rating={3} />
-				<Stars rating={4} />
-				<Stars rating={5} />
 			</div>
 		</div>
 	);
