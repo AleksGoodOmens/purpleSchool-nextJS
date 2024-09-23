@@ -1,0 +1,12 @@
+.stars {
+	.star {
+		transition: all 0.3s;
+		margin-right: 5px;
+		&.filled {
+			fill: var(--accent);
+		}
+	}
+}
+.editable {
+	cursor: pointer;
+}

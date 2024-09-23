@@ -1,0 +1,35 @@
+.tag {
+	display: inline-block;
+	border: 1px solid var(--primary);
+	border-radius: 20px;
+	padding: 5px 12px;
+	font-weight: 500;
+
+	font-size: var(--fz-xs);
+	text-decoration: none;
+
+	&.success {
+		border-color: var(--success-200);
+		background-color: var(--success-200);
+		color: var(--success-400);
+		font-weight: 700;
+	}
+	&.error {
+		border-color: var(--error);
+		background-color: var(--error);
+		color: var(--secondary);
+		font-weight: 600;
+	}
+	&.accent {
+		border-color: var(--accent);
+		color: var(--accent);
+		font-size: var(--fz-S);
+	}
+	&.ghost {
+		border-color: var(--primary-200);
+		background-color: var(--primary-200);
+		color: var(--secondary);
+		font-weight: 600;
+		font-size: var(--fz-S);
+	}
+}
