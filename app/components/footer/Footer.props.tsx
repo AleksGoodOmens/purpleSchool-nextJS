@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 export interface FooterProps extends PropsWithChildren {
 	classNames?: string;

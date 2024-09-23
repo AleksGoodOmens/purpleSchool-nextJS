@@ -1,7 +1,7 @@
 .wrapper {
 	display: grid;
 	grid-template-rows: auto 1fr auto;
-	grid-template-columns: 1rem minmax(280px, 1fr) 1rem;
+	grid-template-columns: auto minmax(280px, 1fr) auto;
 	grid-template-areas:
 		'. header .'
 		'. main .'
@@ -23,7 +23,7 @@
 }
 @media (min-width: 765px) {
 	.wrapper {
-		grid-template-columns: 1rem 230px minmax(300px, 1460px) 1rem;
+		grid-template-columns: auto 230px minmax(300px, 1460px) auto;
 		grid-template-areas:
 			'. header header .'
 			'. aside main . '

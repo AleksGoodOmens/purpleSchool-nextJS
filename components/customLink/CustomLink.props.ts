@@ -1,7 +1,9 @@
 import { LinkProps } from 'next/link';
-import { PropsWithChildren } from 'react';
+import { AnchorHTMLAttributes, PropsWithChildren } from 'react';
 
-export interface CustomLinkProps extends LinkProps, PropsWithChildren {
+export interface CustomLinkProps
+	extends PropsWithChildren,
+		AnchorHTMLAttributes<HTMLAnchorElement> {
 	className?: string;
 	appearance?: 'active' | 'disabled' | 'alt';
 }
