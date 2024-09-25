@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
-import './globals.css';
+import cn from 'classnames';
+import './globals.scss';
+import styles from './layout.module.scss';
+import { Footer } from './components/footer/Footer';
 
 const openSans = Open_Sans({ subsets: ['cyrillic', 'latin'] });
 
@@ -16,7 +19,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ru">
-			<body className={openSans.className}>{children}</body>
+			<body className={cn(openSans.className, styles.wrapper)}>
+				<header className={styles.header}>header</header>
+
+				<aside className={styles.aside}>aside</aside>
+				<main className={styles.main}>main{children}</main>
+				<Footer classNames={styles.footer} />
+			</body>
 		</html>
 	);
 }

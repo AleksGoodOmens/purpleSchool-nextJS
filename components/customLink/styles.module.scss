@@ -1,0 +1,31 @@
+.link {
+	color: var(--ghost-600);
+	font-weight: 500;
+	font-size: var(--fs-s);
+	text-decoration: none;
+	&:hover,
+	&:active {
+		color: var(--accent);
+	}
+}
+
+.active {
+	color: var(--accent);
+}
+
+.disabled {
+	font-weight: 300;
+	font-size: var(--fs-xs);
+	text-transform: uppercase;
+}
+
+.alt {
+	color: var(--secondary);
+	font-weight: 500;
+	font-size: var(--fs-m);
+	&:hover,
+	&:active {
+		color: var(--secondary);
+		text-decoration: underline;
+	}
+}
