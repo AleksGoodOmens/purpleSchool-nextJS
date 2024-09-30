@@ -6,11 +6,20 @@
 	&:hover,
 	&:active {
 		color: var(--accent);
+		svg {
+			fill: var(--accent);
+		}
 	}
+}
+.default {
+	color: var(--ghost-600);
 }
 
 .active {
 	color: var(--accent);
+	svg {
+		fill: var(--accent);
+	}
 }
 
 .disabled {

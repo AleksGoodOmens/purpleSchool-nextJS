@@ -1,8 +1,8 @@
-import styles from './styles.module.scss';
-import cn from 'classnames';
-import { FooterProps } from './Footer.props';
 import { CustomLink, PTag } from '@/components';
+import cn from 'classnames';
 import { format } from 'date-fns';
+import { FooterProps } from './Footer.props';
+import styles from './styles.module.scss';
 
 function Footer({ classNames }: FooterProps) {
 	return (

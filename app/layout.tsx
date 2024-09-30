@@ -1,9 +1,13 @@
+import { getMenu } from '@/api/getMenu';
+import { AppContextProvider } from '@/context/app.context';
+import { TopLevelCategory } from '@/interfaces';
+import cn from 'classnames';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
-import cn from 'classnames';
+import { Footer } from './components';
+import { Aside } from './components/ui/aside/Aside';
 import './globals.scss';
 import styles from './layout.module.scss';
-import { Footer } from './components/footer/Footer';
 
 const openSans = Open_Sans({ subsets: ['cyrillic', 'latin'] });
 
@@ -12,7 +16,7 @@ export const metadata: Metadata = {
 	description: 'Создано мною в учебных целях'
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children
 }: Readonly<{
 	children: React.ReactNode;
@@ -20,11 +24,14 @@ export default function RootLayout({
 	return (
 		<html lang="ru">
 			<body className={cn(openSans.className, styles.wrapper)}>
-				<header className={styles.header}>header</header>
-
-				<aside className={styles.aside}>aside</aside>
-				<main className={styles.main}>main{children}</main>
-				<Footer classNames={styles.footer} />
+				<AppContextProvider
+					defaultCategory={TopLevelCategory.Courses}
+					menu={await getMenu(0)}>
+					<header className={styles.header}>header</header>
+					<Aside className={styles.aside} />
+					<main className={styles.main}>main{children}</main>
+					<Footer classNames={styles.footer} />
+				</AppContextProvider>
 			</body>
 		</html>
 	);

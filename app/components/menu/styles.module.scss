@@ -1,0 +1,26 @@
+.firstLevelItem {
+	display: flex;
+	align-items: center;
+	gap: 22px;
+	font-size: var(--fs-l);
+	list-style: none;
+}
+
+.secondLevel {
+	display: grid;
+	gap: 10px;
+	margin: 1rem 0 1rem 1rem;
+	border-left: 1px solid var(--ghost-600);
+	padding: 1rem 0;
+}
+.secondLevelItem {
+	cursor: pointer;
+	padding-left: 1rem;
+	font-weight: 300;
+	font-size: var(--fs-xs);
+	text-transform: uppercase;
+}
+.thirdLevelItem {
+	padding-left: 1rem;
+	text-transform: capitalize;
+}
