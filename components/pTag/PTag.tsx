@@ -1,6 +1,6 @@
 import cn from 'classnames';
-import { PTagProps } from './PTag.props';
 import styles from './PTag.module.scss';
+import { PTagProps } from './PTag.props';
 
 function PTag({ children, className, appearance = 'm', ...props }: PTagProps) {
 	return (

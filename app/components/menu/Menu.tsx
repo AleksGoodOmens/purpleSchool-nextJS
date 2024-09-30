@@ -1,42 +1,12 @@
 'use client';
 import { CustomLink } from '@/components';
 import { AppContext } from '@/context/app.context';
-import { FirstLevelMenuItem, PageItem, TopLevelCategory } from '@/interfaces';
+import { firstLevelMenu } from '@/helpers';
+import { PageItem } from '@/interfaces';
 import cn from 'classnames';
 import { usePathname } from 'next/navigation';
 import { useContext } from 'react';
-import BooksIcon from './icons/books.svg';
-import CourseIcon from './icons/courses.svg';
-import ProductsIcon from './icons/products.svg';
-import ServicesIcon from './icons/services.svg';
 import styles from './styles.module.scss';
-
-const firstLevelMenu: FirstLevelMenuItem[] = [
-	{
-		route: 'courses',
-		name: 'Курсы',
-		icon: <CourseIcon />,
-		id: TopLevelCategory.Courses
-	},
-	{
-		route: 'services',
-		name: 'Сервисы',
-		icon: <ServicesIcon />,
-		id: TopLevelCategory.Services
-	},
-	{
-		route: 'books',
-		name: 'Книги',
-		icon: <BooksIcon />,
-		id: TopLevelCategory.Books
-	},
-	{
-		route: 'products',
-		name: 'Товары',
-		icon: <ProductsIcon />,
-		id: TopLevelCategory.Products
-	}
-];
 
 function Menu() {
 	const { defaultCategory, menu, setMenu } = useContext(AppContext);

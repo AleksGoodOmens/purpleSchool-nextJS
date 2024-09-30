@@ -1,7 +1,7 @@
 import cn from 'classnames';
-import { ButtonProps } from './button.props';
-import styles from './button.module.scss';
 import ArrowIconSvg from './arrow.svg';
+import styles from './button.module.scss';
+import { ButtonProps } from './button.props';
 function Button({
 	children,
 	appearance,

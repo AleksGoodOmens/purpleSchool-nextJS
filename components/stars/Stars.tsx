@@ -3,8 +3,8 @@ import cn from 'classnames';
 import { StarsProps } from './Stars.props';
 import styles from './styles.module.scss';
 
+import { KeyboardEvent, useEffect, useState } from 'react';
 import Star from './star.svg';
-import { useEffect, useState, KeyboardEvent } from 'react';
 
 function Stars({
 	rating,
