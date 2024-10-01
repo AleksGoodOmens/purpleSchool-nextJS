@@ -6,7 +6,8 @@ export async function getMenu<T>(firstCategory: number): Promise<T> {
 		body: JSON.stringify({
 			firstCategory
 		}),
-		headers: new Headers({ 'content-type': 'application/json' })
+		headers: new Headers({ 'content-type': 'application/json' }),
+		next: { revalidate: 10 }
 	});
 
 	return response.json();

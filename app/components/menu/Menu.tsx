@@ -9,6 +9,8 @@ import { useContext } from 'react';
 import styles from './styles.module.scss';
 
 function Menu() {
+	const pathRoute = usePathname();
+
 	const { defaultCategory, menu, setMenu } = useContext(AppContext);
 
 	const openSecondLevelMenu = (secondCategory: string) => {
@@ -21,8 +23,6 @@ function Menu() {
 			);
 	};
 
-	const pathRoute = usePathname();
-
 	const createFirstLevel = () => {
 		return (
 			<ul>
@@ -30,7 +30,7 @@ function Menu() {
 					<li key={item.route}>
 						<CustomLink
 							className={cn(styles['firstLevelItem'])}
-							appearance={item.id === defaultCategory ? 'active' : 'default'}
+							appearance={pathRoute.includes(item.route) ? 'active' : 'default'}
 							href={`/${item.route}`}>
 							{item.icon}
 							<span>{item.name}</span>

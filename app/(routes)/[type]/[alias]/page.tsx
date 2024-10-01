@@ -13,31 +13,31 @@ export async function generateStaticParams() {
 			return [];
 		}
 
-		const flatMenu = menu.flatMap((menuItem) =>
-			menuItem.pages.map((page) => ({ alias: page.alias }))
+		return menu.flatMap((menuItem) =>
+			menuItem.pages.map((page) => ({
+				alias: page.alias,
+				type: 'courses'
+			}))
 		);
-
-		console.log(flatMenu);
-
-		return flatMenu;
 	} catch (error) {
 		console.error('Error fetching menu:', error);
 		return [];
 	}
 }
-async function AliasPage({
-	params
-}: {
-	params: { alias: string; type: string };
-}) {
+async function AliasPage({ params }: { params: { alias: string } }) {
 	if (!params?.alias) {
 		return notFound();
 	}
 
-	const page = await getPage(params.alias);
+	const page = await getPage(`/${params.alias}`);
 	if (!page) return notFound();
 
-	return <HTag tag="h1">{page.title}</HTag>;
+	return (
+		<>
+			<HTag tag="h1">{page.title}</HTag>
+			<HTag tag="h2">{params.alias}</HTag>
+		</>
+	);
 }
 
 export default AliasPage;

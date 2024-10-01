@@ -4,7 +4,7 @@ import { createContext, PropsWithChildren, useState } from 'react';
 
 export interface IAppContext extends PropsWithChildren {
 	menu: MenuItem[];
-	defaultCategory: TopLevelCategory.Courses;
+	defaultCategory: TopLevelCategory;
 	setMenu?: (newMenu: MenuItem[]) => void;
 }
 
