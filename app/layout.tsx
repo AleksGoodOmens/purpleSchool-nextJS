@@ -24,9 +24,7 @@ export default async function RootLayout({
 	return (
 		<html lang="ru">
 			<body className={cn(openSans.className, styles.wrapper)}>
-				<AppContextProvider
-					defaultCategory={TopLevelCategory.Courses}
-					menu={await getMenu(0)}>
+				<AppContextProvider menu={await getMenu(TopLevelCategory.Courses)}>
 					<header className={styles.header}>header</header>
 					<Aside className={styles.aside} />
 					<main className={styles.main}>main{children}</main>

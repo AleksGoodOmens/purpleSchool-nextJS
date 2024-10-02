@@ -1,21 +1,20 @@
 'use client';
-import { MenuItem, TopLevelCategory } from '@/interfaces';
+import { MenuItem } from '@/interfaces';
 import { createContext, PropsWithChildren, useState } from 'react';
 
 export interface IAppContext extends PropsWithChildren {
 	menu: MenuItem[];
-	defaultCategory: TopLevelCategory;
+
 	setMenu?: (newMenu: MenuItem[]) => void;
 }
 
 export const AppContext = createContext<IAppContext>({
-	menu: [],
-	defaultCategory: TopLevelCategory.Courses
+	menu: []
 });
 
 export const AppContextProvider = ({
 	menu,
-	defaultCategory,
+
 	children
 }: IAppContext) => {
 	const [menuState, setMenuState] = useState(menu);
@@ -24,7 +23,7 @@ export const AppContextProvider = ({
 		setMenuState(newMenu);
 	};
 	return (
-		<AppContext.Provider value={{ menu: menuState, defaultCategory, setMenu }}>
+		<AppContext.Provider value={{ menu: menuState, setMenu }}>
 			{children}
 		</AppContext.Provider>
 	);

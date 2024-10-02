@@ -1,8 +1,9 @@
 'use client';
+import { getMenu } from '@/api/getMenu';
 import { CustomLink } from '@/components';
 import { AppContext } from '@/context/app.context';
 import { firstLevelMenu } from '@/helpers';
-import { PageItem } from '@/interfaces';
+import { MenuItem, PageItem } from '@/interfaces';
 import cn from 'classnames';
 import { usePathname } from 'next/navigation';
 import { useContext } from 'react';
@@ -11,7 +12,7 @@ import styles from './styles.module.scss';
 function Menu() {
 	const pathRoute = usePathname();
 
-	const { defaultCategory, menu, setMenu } = useContext(AppContext);
+	const { menu, setMenu } = useContext(AppContext);
 
 	const openSecondLevelMenu = (secondCategory: string) => {
 		setMenu &&
@@ -21,6 +22,11 @@ function Menu() {
 					return m;
 				})
 			);
+	};
+
+	const changeCurrentMenu = async (_id: number) => {
+		const newMenu = await getMenu<MenuItem[]>(_id);
+		setMenu && setMenu(newMenu);
 	};
 
 	const createFirstLevel = () => {
@@ -33,9 +39,11 @@ function Menu() {
 							appearance={pathRoute.includes(item.route) ? 'active' : 'default'}
 							href={`/${item.route}`}>
 							{item.icon}
-							<span>{item.name}</span>
+							<span onClick={() => changeCurrentMenu(item.id)}>
+								{item.name}
+							</span>
 						</CustomLink>
-						{item.id === defaultCategory && createSecondLevel(item.route)}
+						{pathRoute.includes(item.route) && createSecondLevel(item.route)}
 					</li>
 				))}
 			</ul>
@@ -45,11 +53,9 @@ function Menu() {
 		return (
 			<ul className={styles['secondLevel']}>
 				{menu.map((item) => {
-					if (
-						item.pages.map((p) => p.alias).includes(pathRoute.split('/')[2])
-					) {
+					if (item.pages.map((p) => p.alias).includes(pathRoute.split('/')[2]))
 						item.isOpened = true;
-					}
+
 					return (
 						<li
 							className={cn(styles['secondLevelItem'])}
