@@ -1,7 +1,7 @@
-import { Page } from '@/interfaces';
+import { IPage } from '@/interfaces';
 import { PATHS } from '.';
 
-export async function getPage(alias: string): Promise<Page | null> {
+export async function getPage(alias: string): Promise<IPage | null> {
 	const res = await fetch(PATHS.topPage.byAlias + alias, {
 		next: { revalidate: 10 }
 	});
@@ -10,5 +10,3 @@ export async function getPage(alias: string): Promise<Page | null> {
 	}
 	return res.json();
 }
-
-// todo add correct return type

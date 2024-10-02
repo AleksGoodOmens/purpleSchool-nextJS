@@ -1,8 +1,8 @@
-import { getMenu } from '@/api/getMenu';
-import { getPage } from '@/api/getPage';
-import { HTag } from '@/components';
+import { getMenu, getPage, getProduct } from '@/api';
 import { MenuItem } from '@/interfaces';
 import { notFound } from 'next/navigation';
+import { TopPage } from './components/TopPage/TopPage';
+import styles from './page.module.scss';
 
 export async function generateStaticParams() {
 	try {
@@ -31,12 +31,15 @@ async function AliasPage({ params }: { params: { alias: string } }) {
 
 	const page = await getPage(`/${params.alias}`);
 	if (!page) return notFound();
+	const products = await getProduct(page?.category);
 
 	return (
-		<>
-			<HTag tag="h1">{page.title}</HTag>
-			<HTag tag="h2">{params.alias}</HTag>
-		</>
+		<section className={styles['page']}>
+			<TopPage
+				title={page.title}
+				productsAmount={products?.length}
+			/>
+		</section>
 	);
 }
 

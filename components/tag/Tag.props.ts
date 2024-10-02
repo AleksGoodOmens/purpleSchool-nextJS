@@ -5,4 +5,5 @@ export interface TagProps extends PropsWithChildren {
 	type?: 'link' | 'div';
 	href?: string;
 	bg?: 'success' | 'error' | 'ghost' | 'accent' | 'default';
+	size?: 'm' | 's';
 }

@@ -8,3 +8,7 @@ export const PATHS = {
 		createDemo: process.env.NEXT_PUBLIC_DOMAIN + '/api/review/create—demo'
 	}
 };
+
+export * from './getMenu';
+export * from './getPage';
+export * from './getProduct';

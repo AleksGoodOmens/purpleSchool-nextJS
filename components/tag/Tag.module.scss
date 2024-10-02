@@ -2,7 +2,7 @@
 	display: inline-block;
 	border: 1px solid var(--primary);
 	border-radius: 20px;
-	padding: 5px 12px;
+	padding: 5px 10px;
 	font-weight: 500;
 
 	font-size: var(--fz-xs);
@@ -31,5 +31,12 @@
 		color: var(--secondary);
 		font-weight: 600;
 		font-size: var(--fz-S);
+	}
+
+	&.m {
+		font-size: var(--fs-s);
+	}
+	&.s {
+		font-size: var(--fs-xs);
 	}
 }

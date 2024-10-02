@@ -4,6 +4,7 @@ import { TagProps } from './Tag.props';
 
 function Tag({
 	children,
+	size = 'm',
 	className,
 	href,
 	bg = 'default',
@@ -18,7 +19,9 @@ function Tag({
 						[styles['accent']]: bg === 'accent',
 						[styles['ghost']]: bg === 'ghost',
 						[styles['success']]: bg === 'success',
-						[styles['error']]: bg === 'error'
+						[styles['error']]: bg === 'error',
+						[styles['m']]: size === 'm',
+						[styles['s']]: size === 's'
 					})}
 					href={href}
 					{...props}>

@@ -27,7 +27,7 @@ export default async function RootLayout({
 				<AppContextProvider menu={await getMenu(TopLevelCategory.Courses)}>
 					<header className={styles.header}>header</header>
 					<Aside className={styles.aside} />
-					<main className={styles.main}>main{children}</main>
+					<main className={styles.main}>{children}</main>
 					<Footer classNames={styles.footer} />
 				</AppContextProvider>
 			</body>

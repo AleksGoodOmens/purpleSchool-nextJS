@@ -1,4 +1,4 @@
-export interface Page {
+export interface IPage {
 	_id: string;
 	tags: string[];
 	firstCategory: number;
