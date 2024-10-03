@@ -1,7 +1,9 @@
 import { getMenu, getPage, getProduct } from '@/api';
-import { MenuItem } from '@/interfaces';
+import { MenuItem, TopLevelCategory } from '@/interfaces';
+import parse from 'html-react-parser';
 import { notFound } from 'next/navigation';
-import { TopPage } from './components/TopPage/TopPage';
+import { Advantages, HhCards, Skills, TopPage } from './components';
+
 import styles from './page.module.scss';
 
 export async function generateStaticParams() {
@@ -24,7 +26,11 @@ export async function generateStaticParams() {
 		return [];
 	}
 }
-async function AliasPage({ params }: { params: { alias: string } }) {
+async function AliasPage({
+	params
+}: {
+	params: { type: string; alias: string };
+}) {
 	if (!params?.alias) {
 		return notFound();
 	}
@@ -39,6 +45,32 @@ async function AliasPage({ params }: { params: { alias: string } }) {
 				title={page.title}
 				productsAmount={products?.length}
 			/>
+			{products && (
+				<div>
+					{products.map((p) => (
+						<div key={p._id}>
+							{p.title}
+							<span>-------{p.initialRating}-----</span>
+
+							<span>{p.price}</span>
+						</div>
+					))}
+				</div>
+			)}
+			{page.firstCategory === TopLevelCategory.Courses && page.hh && (
+				<HhCards
+					title={page.category}
+					{...page.hh}
+				/>
+			)}
+			{page.advantages && page.advantages?.length > 0 && (
+				<Advantages advantages={page.advantages} />
+			)}
+			{page.seoText && (
+				<div className={styles['seo']}>{parse(page.seoText)}</div>
+			)}
+
+			{page.tags && page.tags.length > 0 && <Skills skills={page.tags} />}
 		</section>
 	);
 }

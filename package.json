@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "html-react-parser": "^5.1.17",
     "next": "14.2.4",
     "prettier-plugin-organize-imports": "^4.1.0",
     "react": "^18",

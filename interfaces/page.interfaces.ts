@@ -9,17 +9,24 @@ export interface IPage {
 	tagsTitle: string;
 	metaTitle: string;
 	metaDescription: string;
-	advantages: any[];
+	advantages?: IAdvantage[];
 	createdAt: string;
 	updatedAt: string;
 	__v: number;
-	hh: Hh;
+	hh?: Hh;
 	qas: any[];
 	addresses: any[];
 	categoryOn: string;
 	blog: Blog;
+	seoText?: string;
 	sravnikus: Sravnikus;
-	learningclub: Learningclub;
+	learningClub: LearningClub;
+}
+
+export interface IAdvantage {
+	id: number;
+	title: string;
+	description: string;
 }
 
 export interface Hh {
@@ -52,7 +59,7 @@ export interface Qa {
 	answer: string;
 }
 
-export interface Learningclub {
+export interface LearningClub {
 	metaTitle: string;
 	metaDescription: string;
 	seoText: string;

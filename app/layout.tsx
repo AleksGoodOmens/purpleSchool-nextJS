@@ -4,8 +4,7 @@ import { TopLevelCategory } from '@/interfaces';
 import cn from 'classnames';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
-import { Footer } from './components';
-import { Aside } from './components/ui/aside/Aside';
+import { Aside, Footer } from './components';
 import './globals.scss';
 import styles from './layout.module.scss';
 
