@@ -1,9 +1,7 @@
-import { IProducts } from '@/interfaces';
+import { IProduct } from '@/interfaces';
 import { PATHS } from '.';
 
-export async function getProduct(
-	category: string
-): Promise<IProducts[] | null> {
+export async function getProduct(category: string): Promise<IProduct[] | null> {
 	const res = await fetch(PATHS.product.find, {
 		method: 'POST',
 		body: JSON.stringify({ category: category, limit: 10 }),

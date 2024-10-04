@@ -2,7 +2,7 @@ import { getMenu, getPage, getProduct } from '@/api';
 import { MenuItem, TopLevelCategory } from '@/interfaces';
 import parse from 'html-react-parser';
 import { notFound } from 'next/navigation';
-import { Advantages, HhCards, Skills, TopPage } from './components';
+import { Advantages, HhCards, Skills, TopPageProducts } from './components';
 
 import styles from './page.module.scss';
 
@@ -41,22 +41,11 @@ async function AliasPage({
 
 	return (
 		<section className={styles['page']}>
-			<TopPage
+			<TopPageProducts
 				title={page.title}
-				productsAmount={products?.length}
+				products={products}
 			/>
-			{products && (
-				<div>
-					{products.map((p) => (
-						<div key={p._id}>
-							{p.title}
-							<span>-------{p.initialRating}-----</span>
 
-							<span>{p.price}</span>
-						</div>
-					))}
-				</div>
-			)}
 			{page.firstCategory === TopLevelCategory.Courses && page.hh && (
 				<HhCards
 					title={page.category}
@@ -69,7 +58,6 @@ async function AliasPage({
 			{page.seoText && (
 				<div className={styles['seo']}>{parse(page.seoText)}</div>
 			)}
-
 			{page.tags && page.tags.length > 0 && <Skills skills={page.tags} />}
 		</section>
 	);

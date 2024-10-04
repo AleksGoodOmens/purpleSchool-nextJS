@@ -9,7 +9,7 @@ function Advantages({ advantages }: { advantages: IAdvantage[] }) {
 			<HTag tag="h2">Преимущества</HTag>
 			{advantages.map((a) => (
 				<div
-					key={a.id}
+					key={a.title}
 					className={styles['item']}>
 					<Tag bg="success">
 						<CheckIcon />

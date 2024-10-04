@@ -1,4 +1,6 @@
+import { IProduct } from '@/interfaces';
+
 export interface ITopPageProps {
 	title: string;
-	productsAmount?: number;
+	products: IProduct[] | null;
 }
