@@ -40,7 +40,7 @@ async function AliasPage({
 	const products = await getProduct(page?.category);
 
 	return (
-		<section className={styles['page']}>
+		<>
 			<TopPageProducts
 				title={page.title}
 				products={products}
@@ -59,7 +59,7 @@ async function AliasPage({
 				<div className={styles['seo']}>{parse(page.seoText)}</div>
 			)}
 			{page.tags && page.tags.length > 0 && <Skills skills={page.tags} />}
-		</section>
+		</>
 	);
 }
 
