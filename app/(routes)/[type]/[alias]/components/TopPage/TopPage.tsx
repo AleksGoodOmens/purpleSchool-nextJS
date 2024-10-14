@@ -3,7 +3,7 @@
 import { HTag, Tag } from '@/components';
 import { sortReducer } from '@/reducer/sortReducer';
 import { useReducer } from 'react';
-import { Products } from '../Products/Products';
+import { Product } from '../Product/Product';
 import { Sorter } from '../Sorter/Sorter';
 import { SortEnum } from '../Sorter/sorter.props';
 import { ITopPageProps } from './TopPage.props';
@@ -37,7 +37,13 @@ function TopPageProducts({ title, products }: ITopPageProps) {
 					sort={sort}
 				/>
 			</header>
-			{sortedProducts && <Products products={sortedProducts} />}
+			{sortedProducts &&
+				sortedProducts.map((p) => (
+					<Product
+						key={p._id}
+						{...p}
+					/>
+				))}
 		</>
 	);
 }

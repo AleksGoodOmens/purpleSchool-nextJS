@@ -1,0 +1,40 @@
+.wrapper {
+	display: grid;
+	grid-template-columns:
+		[start] 70px [logoEnd] 30px [titleStart] calc(50% - 100px)
+		1fr [middle] auto [priceStart] auto [priceEnd] 40px [creditStart] auto [creditEnd] 40px [ratingStart] auto [end];
+	margin-bottom: 1rem;
+	padding: 2rem;
+}
+.logo {
+	grid-row: 1 / span 2;
+	grid-column: start / logoEnd;
+}
+.title,
+.tags {
+	grid-column: titleStart / middle;
+}
+.titlePrice,
+.price {
+	grid-column: priceStart / priceEnd;
+}
+.titleCredit,
+.credit {
+	grid-column: creditStart / creditEnd;
+}
+.titleRating,
+.rating {
+	grid-column: ratingStart / end;
+}
+.hr,
+.description,
+.actions {
+	grid-column: start / end;
+}
+.feature {
+	grid-column: start / middle;
+}
+
+.advBlock {
+	grid-column: middle / end;
+}
