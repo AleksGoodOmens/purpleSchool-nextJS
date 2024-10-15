@@ -2,11 +2,12 @@
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 	grid-template-columns: auto minmax(280px, 1fr) auto;
+
 	grid-template-areas:
 		'. header .'
 		'. main .'
 		'footer footer footer';
-	gap: 40px 30px;
+	gap: 40px 10px;
 	min-height: 100dvh;
 }
 .header {
@@ -29,6 +30,7 @@
 			'. header header .'
 			'. aside main . '
 			'footer footer footer footer';
+		gap: 40px 30px;
 	}
 
 	.header {

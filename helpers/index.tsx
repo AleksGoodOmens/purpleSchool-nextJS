@@ -34,3 +34,9 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 
 export const priceRu = (price: number) =>
 	price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+export const correctEnding = (amount: number): string => {
+	if (amount >= 10) return correctEnding(Number(amount.toString().slice(-1)));
+	const wordsList = ['отзывов', 'отзыв', 'отзыва'];
+	return wordsList[amount >= 5 || amount === 0 ? 0 : amount >= 2 ? 2 : 1];
+};

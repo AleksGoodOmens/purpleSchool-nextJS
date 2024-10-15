@@ -37,7 +37,9 @@ function Tag({
 						[styles['accent']]: bg === 'accent',
 						[styles['ghost']]: bg === 'ghost',
 						[styles['success']]: bg === 'success',
-						[styles['error']]: bg === 'error'
+						[styles['error']]: bg === 'error',
+						[styles['m']]: size === 'm',
+						[styles['s']]: size === 's'
 					})}
 					{...props}>
 					{children}
