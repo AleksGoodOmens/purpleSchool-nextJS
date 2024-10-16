@@ -2,6 +2,8 @@
 
 import { Button, Card, Divider, HTag, PTag, Stars, Tag } from '@/components';
 import { correctEnding, priceRu } from '@/helpers';
+import cn from 'classnames';
+import Image from 'next/image';
 import styles from './Product.module.scss';
 import { ProductsProps } from './Product.props';
 
@@ -18,12 +20,13 @@ function Product({ ...props }: ProductsProps) {
 		initialRating,
 		reviewCount,
 		advantages,
-		disadvantages
+		disadvantages,
+		characteristics
 	} = props;
 	return (
 		<Card className={styles.wrapper}>
 			<div className={styles.logo}>
-				<img
+				<Image
 					width={70}
 					height={70}
 					src={image}
@@ -39,6 +42,7 @@ function Product({ ...props }: ProductsProps) {
 				{priceRu(price)} ₽
 				{oldPrice && (
 					<Tag
+						className={styles.oldPrice}
 						bg="success"
 						size="s">
 						{priceRu(price - oldPrice)}
@@ -74,7 +78,17 @@ function Product({ ...props }: ProductsProps) {
 				appearance="m">
 				{description}
 			</PTag>
-			<div className={styles.feature}>feature</div>
+			<ul className={styles.feature}>
+				{characteristics.map((c) => (
+					<li
+						className={styles.characteristics}
+						key={c.name}>
+						<HTag tag="h4">{c.name}</HTag>
+						<div className={styles.dots}></div>
+						<PTag>{c.value}</PTag>
+					</li>
+				))}
+			</ul>
 			<div className={styles.advBlock}>
 				{advantages && (
 					<div className={styles.advantages}>
@@ -90,7 +104,7 @@ function Product({ ...props }: ProductsProps) {
 				)}
 			</div>
 
-			<Divider className={styles.hr} />
+			<Divider className={cn(styles.hr, styles.hr2)} />
 
 			<div className={styles.actions}>
 				<Button appearance="primary">Узнать подробнее</Button>
