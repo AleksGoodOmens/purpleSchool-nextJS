@@ -1,0 +1,94 @@
+.name {
+	grid-area: name;
+}
+.title {
+	grid-area: title;
+}
+.textarea {
+	grid-area: textarea;
+	min-height: 6rem;
+}
+.stars {
+	grid-area: stars;
+}
+.button {
+	grid-area: button;
+	max-width: 11rem;
+}
+.text {
+	grid-area: text;
+}
+.alert {
+	grid-area: alert;
+	font-size: var(--fs-xs);
+}
+
+.form {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-areas:
+		'name name'
+		'title title'
+		'textarea textarea'
+		'text stars'
+		'alert alert'
+		'button button';
+	grid-row: 40px;
+	align-items: center;
+	gap: 20px 30px;
+	margin-bottom: 2rem;
+}
+
+.success {
+	position: relative;
+	border-radius: 8px;
+	background-color: var(--success-200);
+	padding: 2rem;
+	&__title {
+		font-weight: bold;
+		font-size: var(--fs-xs);
+	}
+	&__text {
+		padding-right: 3rem;
+		font-size: var(--fs-xs);
+	}
+	&__button {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.form {
+		grid-template-columns: auto auto auto auto;
+
+		grid-template-areas:
+			'name name title title'
+			'textarea textarea textarea textarea'
+			'alert alert alert alert'
+			'text stars stars button';
+	}
+	.success {
+		background-color: var(--success-200);
+		padding: 2rem;
+		&__title {
+			font-weight: bold;
+			font-size: var(--fs-l);
+		}
+		&__button {
+			font-size: var(--fs-m);
+		}
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.form {
+		grid-template-columns: auto auto 1fr auto auto;
+
+		grid-template-areas:
+			'name title . text stars'
+			'textarea textarea textarea textarea textarea'
+			'button alert alert alert alert';
+	}
+}

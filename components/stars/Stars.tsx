@@ -8,6 +8,7 @@ import Star from './star.svg';
 
 function Stars({
 	rating,
+	className,
 	setRating,
 	isEditable = false,
 	...props
@@ -55,7 +56,9 @@ function Stars({
 
 	return (
 		<div
-			className={cn(styles['stars'], { [styles['editable']]: isEditable })}
+			className={cn(className, styles['stars'], {
+				[styles['editable']]: isEditable
+			})}
 			{...props}>
 			{stars.map((s, i) => (
 				<span key={i}>{s}</span>

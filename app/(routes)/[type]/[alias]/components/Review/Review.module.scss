@@ -1,0 +1,62 @@
+.avatar {
+	grid-area: avatar;
+}
+.name {
+	grid-area: name;
+	font-weight: bold;
+}
+.title {
+	grid-area: title;
+}
+.date {
+	grid-area: date;
+}
+.stars {
+	grid-area: stars;
+	white-space: nowrap;
+}
+.desc {
+	grid-area: desc;
+}
+.divider {
+	grid-area: divider;
+	margin: 10px 0 10px 0;
+}
+
+.wrapper {
+	display: grid;
+	grid-template-columns: 30px 1fr;
+	grid-template-areas:
+		'avatar name'
+		'title title'
+		'date date'
+		'stars stars'
+		'desc desc'
+		'divider divider';
+
+	align-items: center;
+	gap: 10px 20px;
+}
+
+@media screen and (min-width: 576px) {
+	.wrapper {
+		grid-template-columns: 30px auto 1fr;
+		grid-template-areas:
+			'avatar name name'
+			'title title title'
+			'date date stars'
+			'desc desc desc'
+			'divider divider divider';
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.wrapper {
+		grid-template-columns: auto auto auto 1fr auto auto;
+
+		grid-template-areas:
+			'avatar name title . date stars'
+			'desc desc desc desc desc desc'
+			'divider divider divider divider divider divider';
+	}
+}

@@ -7,3 +7,4 @@ export * from './input/Input';
 export * from './pTag/PTag';
 export * from './stars/Stars';
 export * from './tag/Tag';
+export * from './Textarea/Textarea';
