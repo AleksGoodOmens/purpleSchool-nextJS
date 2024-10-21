@@ -14,7 +14,14 @@ import Star from './star.svg';
 
 export const Stars = forwardRef(
 	(
-		{ rating, className, setRating, isEditable = false, ...props }: StarsProps,
+		{
+			error,
+			rating,
+			className,
+			setRating,
+			isEditable = false,
+			...props
+		}: StarsProps,
 		ref: ForwardedRef<HTMLDivElement>
 	) => {
 		const [stars, setStars] = useState<JSX.Element[]>(
@@ -59,15 +66,18 @@ export const Stars = forwardRef(
 		};
 
 		return (
-			<div
-				className={cn(className, styles['stars'], {
-					[styles['editable']]: isEditable
-				})}
-				ref={ref}
-				{...props}>
-				{stars.map((s, i) => (
-					<span key={i}>{s}</span>
-				))}
+			<div className={cn(styles.wrapper, className)}>
+				<div
+					className={cn(className, styles['stars'], {
+						[styles['editable']]: isEditable
+					})}
+					ref={ref}
+					{...props}>
+					{stars.map((s, i) => (
+						<span key={i}>{s}</span>
+					))}
+				</div>
+				{error && <div className={styles.error}>{error?.message}</div>}
 			</div>
 		);
 	}

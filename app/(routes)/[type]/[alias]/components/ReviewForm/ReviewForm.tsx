@@ -43,11 +43,15 @@ function ReviewForm() {
 			<Controller
 				control={control}
 				name="rating"
+				rules={{
+					required: { message: 'Ваша оценка?', value: true }
+				}}
 				render={({ field }) => (
 					<Stars
 						isEditable
 						setRating={field.onChange}
 						rating={field.value}
+						error={errors.rating}
 						className={styles.stars}
 					/>
 				)}
@@ -58,8 +62,8 @@ function ReviewForm() {
 					required: { message: 'Введите комментарий', value: true },
 					minLength: { message: 'Недостаточная длина комментария', value: 10 },
 					maxLength: {
-						message: 'Длина комментария больше 100 символов',
-						value: 100
+						message: 'Длина комментария больше 300 символов',
+						value: 300
 					}
 				})}
 				className={styles.textarea}
