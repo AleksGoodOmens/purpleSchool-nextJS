@@ -39,10 +39,9 @@
 	margin-bottom: 2rem;
 }
 
-.success {
+.panel {
 	position: relative;
 	border-radius: 8px;
-	background-color: var(--success-200);
 	padding: 2rem;
 	&__title {
 		font-weight: bold;
@@ -57,6 +56,12 @@
 		top: 2rem;
 		right: 2rem;
 	}
+}
+.successSend {
+	background-color: var(--success-200);
+}
+.errorSend {
+	background-color: var(--error);
 }
 
 @media screen and (min-width: 992px) {

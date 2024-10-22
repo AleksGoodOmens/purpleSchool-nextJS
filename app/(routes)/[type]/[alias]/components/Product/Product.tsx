@@ -37,7 +37,7 @@ function Product({ ...props }: ProductsProps) {
 								{...r}
 							/>
 						))}
-						<AddReview />
+						<AddReview productId={props._id} />
 					</>
 				</Card>
 			)}

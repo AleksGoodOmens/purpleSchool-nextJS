@@ -1,1 +1,3 @@
-export interface AddReviewProps {}
+export interface AddReviewProps {
+	productId: string;
+}

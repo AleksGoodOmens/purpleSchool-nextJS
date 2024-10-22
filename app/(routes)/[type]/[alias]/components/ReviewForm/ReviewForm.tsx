@@ -3,19 +3,35 @@
 import { Button, Input, Stars, Textarea } from '@/components';
 import { ReviewFormProps } from './ReviewForm.props';
 
+import { sendPost } from '@/api/sendPost';
+import { Review } from '@/interfaces';
 import { Controller, useForm } from 'react-hook-form';
 import styles from './ReviewForm.module.scss';
 
-function ReviewForm() {
+function ReviewForm({
+	productId,
+	handleSended,
+	setErrorSend
+}: ReviewFormProps) {
 	const {
 		register,
 		control,
 		handleSubmit,
+		reset,
 		formState: { errors }
-	} = useForm<ReviewFormProps>();
+	} = useForm<Review>();
 
-	const onSubmit = (data: ReviewFormProps) => {
-		console.log(data);
+	const onSubmit = async (formData: ReviewFormProps) => {
+		try {
+			const { message } = await sendPost({ ...formData, productId });
+			console.log(message);
+			reset();
+			handleSended();
+		} catch (error) {
+			if (error instanceof Error) {
+				setErrorSend(error.message);
+			}
+		}
 	};
 
 	return (
@@ -72,9 +88,11 @@ function ReviewForm() {
 			/>
 			<Button
 				className={styles.button}
+				type="submit"
 				appearance="primary">
 				Отправить
 			</Button>
+
 			<span className={styles.alert}>
 				* Перед публикацией отзыв пройдет предварительную модерацию и проверку
 			</span>
