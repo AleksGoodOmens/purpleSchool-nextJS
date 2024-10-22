@@ -7,7 +7,11 @@ import Image from 'next/image';
 import styles from './ProductInfo.module.scss';
 import { ProductInfoProps } from './ProductInfo.props';
 
-function ProductInfo({ toggleOpen, ...props }: ProductInfoProps) {
+function ProductInfo({
+	scrollToReview,
+	toggleOpen,
+	...props
+}: ProductInfoProps) {
 	const {
 		title,
 		description,
@@ -69,9 +73,12 @@ function ProductInfo({ toggleOpen, ...props }: ProductInfoProps) {
 			</div>
 			<div className={styles.titlePrice}>Цена</div>
 			<div className={styles.titleCredit}>Кредит</div>
-			<div className={styles.titleRating}>
+			<a
+				href="#reviews"
+				onClick={scrollToReview}
+				className={styles.titleRating}>
 				{reviewCount} {correctEnding(reviewCount)}
-			</div>
+			</a>
 
 			<Divider className={styles.hr} />
 
