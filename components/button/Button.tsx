@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import Image from 'next/image';
 import ArrowIconSvg from './arrow.svg';
 import styles from './button.module.scss';
 import { ButtonProps } from './button.props';
@@ -23,7 +24,12 @@ function Button({
 						[styles['down']]: arrow === 'down',
 						[styles['right']]: arrow === 'right'
 					})}>
-					<ArrowIconSvg />
+					<Image
+						src={ArrowIconSvg}
+						width={12}
+						height={12}
+						alt="arrow"
+					/>
 				</span>
 			) : (
 				''

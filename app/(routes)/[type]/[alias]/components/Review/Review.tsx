@@ -8,12 +8,19 @@ import Avatar from './avatar.svg';
 
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
+import Image from 'next/image';
 
 function Review({ ...props }: ReviewProps) {
 	const { title, description, _id, name, rating, updatedAt } = props;
 	return (
 		<div className={styles.wrapper}>
-			<Avatar className={styles.avatar} />
+			<Image
+				src={Avatar}
+				alt="avatar"
+				width={100}
+				height={100}
+				className={styles.avatar}
+			/>
 			<PTag
 				className={styles.name}
 				appearance="s">

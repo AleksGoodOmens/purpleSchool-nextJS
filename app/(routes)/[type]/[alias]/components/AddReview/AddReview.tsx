@@ -5,6 +5,7 @@ import { AddReviewProps } from './AddReview.props';
 import CloseIcon from './closeIcon.svg';
 
 import cn from 'classnames';
+import Image from 'next/image';
 import { useState } from 'react';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 import styles from './AddReview.module.scss';
@@ -34,7 +35,12 @@ function AddReview({ productId }: AddReviewProps) {
 						appearance="primary"
 						onClick={() => setSended(false)}
 						className={styles['panel__button']}>
-						<CloseIcon />
+						<Image
+							src={CloseIcon}
+							width={50}
+							height={50}
+							alt={'close'}
+						/>
 					</Button>
 				</div>
 			)}

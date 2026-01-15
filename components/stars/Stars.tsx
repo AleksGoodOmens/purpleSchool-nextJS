@@ -6,11 +6,13 @@ import styles from './styles.module.scss';
 import {
 	ForwardedRef,
 	forwardRef,
+	JSX,
 	KeyboardEvent,
 	useEffect,
 	useState
 } from 'react';
 import Star from './star.svg';
+import Image from 'next/image';
 
 export const Stars = forwardRef(
 	(
@@ -48,7 +50,7 @@ export const Stars = forwardRef(
 		const constructRating = (r: number) => {
 			const starsArray = stars.map((_, i) => {
 				return (
-					<Star
+					<Image src={Star} alt='star' width={20} height={20}
 						key={i}
 						onMouseEnter={() => onHover(++i)}
 						onMouseLeave={() => onHover(rating)}

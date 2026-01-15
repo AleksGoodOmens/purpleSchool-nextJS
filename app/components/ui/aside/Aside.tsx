@@ -1,4 +1,4 @@
-import Logo from '@/components/logo/logo.svg';
+import { Logo } from '@/components/logo/Logo';
 import cn from 'classnames';
 import { Menu } from '../../menu/Menu';
 import { Search } from '../../Search/Search';

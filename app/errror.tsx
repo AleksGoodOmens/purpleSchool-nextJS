@@ -3,10 +3,10 @@ import { Button, CustomLink, HTag, PTag } from '@/components';
 
 export default function Error({
 	error,
-	reset
+	action
 }: {
 	error: Error;
-	reset: () => void;
+	action: () => void;
 }) {
 	return (
 		<>
@@ -14,7 +14,7 @@ export default function Error({
 			<PTag appearance="l">{JSON.stringify(error)}</PTag>
 			<Button
 				appearance="ghost"
-				onClick={reset}>
+				onClick={action}>
 				reset
 			</Button>
 			<CustomLink

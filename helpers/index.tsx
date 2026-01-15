@@ -1,5 +1,6 @@
 import { FirstLevelMenuItem, TopLevelCategory } from '@/interfaces';
 
+import Image from 'next/image';
 import BooksIcon from './icons/books.svg';
 import CourseIcon from './icons/courses.svg';
 import ProductsIcon from './icons/products.svg';
@@ -9,25 +10,49 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 	{
 		route: 'courses',
 		name: 'Курсы',
-		icon: <CourseIcon />,
+		icon: (
+			<Image
+				src={CourseIcon}
+				alt="50"
+				width={50}
+			/>
+		),
 		id: TopLevelCategory.Courses
 	},
 	{
 		route: 'services',
 		name: 'Сервисы',
-		icon: <ServicesIcon />,
+		icon: (
+			<Image
+				src={ServicesIcon}
+				alt="50"
+				width={50}
+			/>
+		),
 		id: TopLevelCategory.Services
 	},
 	{
 		route: 'books',
 		name: 'Книги',
-		icon: <BooksIcon />,
+		icon: (
+			<Image
+				src={BooksIcon}
+				alt="50"
+				width={50}
+			/>
+		),
 		id: TopLevelCategory.Books
 	},
 	{
 		route: 'products',
 		name: 'Товары',
-		icon: <ProductsIcon />,
+		icon: (
+			<Image
+				src={ProductsIcon}
+				alt="50"
+				width={50}
+			/>
+		),
 		id: TopLevelCategory.Products
 	}
 ];

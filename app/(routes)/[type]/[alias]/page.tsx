@@ -16,10 +16,7 @@ export async function generateStaticParams() {
 		}
 
 		return menu.flatMap((menuItem) =>
-			menuItem.pages.map((page) => ({
-				alias: page.alias,
-				type: 'courses'
-			}))
+			menuItem.pages.map((page) => ({ alias: page.alias, type: 'courses' }))
 		);
 	} catch (error) {
 		console.error('Error fetching menu:', error);
@@ -29,13 +26,14 @@ export async function generateStaticParams() {
 async function AliasPage({
 	params
 }: {
-	params: { type: string; alias: string };
+	params: Promise<{ type: string; alias: string }>;
 }) {
-	if (!params?.alias) {
+	const { type, alias } = await params;
+	if (!alias) {
 		return notFound();
 	}
 
-	const page = await getPage(`/${params.alias}`);
+	const page = await getPage(`/${alias}`);
 	if (!page) return notFound();
 	const products = await getProduct(page?.category);
 

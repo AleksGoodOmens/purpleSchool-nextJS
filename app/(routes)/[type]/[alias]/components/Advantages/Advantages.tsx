@@ -2,6 +2,7 @@ import { HTag, PTag, Tag } from '@/components';
 import { IAdvantage } from '@/interfaces';
 import CheckIcon from './check.svg';
 
+import Image from 'next/image';
 import styles from './styles.module.scss';
 function Advantages({ advantages }: { advantages: IAdvantage[] }) {
 	return (
@@ -12,7 +13,12 @@ function Advantages({ advantages }: { advantages: IAdvantage[] }) {
 					key={a.title}
 					className={styles['item']}>
 					<Tag bg="success">
-						<CheckIcon />
+						<Image
+							src={CheckIcon}
+							alt="check icon"
+							width={50}
+							height={50}
+						/>
 					</Tag>
 					<HTag
 						className={styles['title']}
