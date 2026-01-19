@@ -8,9 +8,7 @@ export interface IAppContext extends PropsWithChildren {
 	setMenu?: (newMenu: MenuItem[]) => void;
 }
 
-export const AppContext = createContext<IAppContext>({
-	menu: []
-});
+export const AppContext = createContext<IAppContext>({ menu: [] });
 
 export const AppContextProvider = ({
 	menu,

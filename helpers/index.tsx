@@ -13,8 +13,8 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 		icon: (
 			<Image
 				src={CourseIcon}
-				alt="50"
-				width={50}
+				alt="courses"
+				width={32}
 			/>
 		),
 		id: TopLevelCategory.Courses
@@ -25,8 +25,8 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 		icon: (
 			<Image
 				src={ServicesIcon}
-				alt="50"
-				width={50}
+				alt="service"
+				width={32}
 			/>
 		),
 		id: TopLevelCategory.Services
@@ -37,8 +37,8 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 		icon: (
 			<Image
 				src={BooksIcon}
-				alt="50"
-				width={50}
+				alt="books"
+				width={32}
 			/>
 		),
 		id: TopLevelCategory.Books
@@ -49,8 +49,8 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 		icon: (
 			<Image
 				src={ProductsIcon}
-				alt="50"
-				width={50}
+				alt="products"
+				width={32}
 			/>
 		),
 		id: TopLevelCategory.Products

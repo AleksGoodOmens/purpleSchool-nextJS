@@ -3,11 +3,13 @@ import { getMenu } from '@/api/getMenu';
 import { CustomLink } from '@/components';
 import { AppContext } from '@/context/app.context';
 import { firstLevelMenu } from '@/helpers';
-import { MenuItem, PageItem } from '@/interfaces';
+import { MenuItem } from '@/interfaces';
 import cn from 'classnames';
 import { usePathname } from 'next/navigation';
 import { useContext } from 'react';
 import styles from './styles.module.scss';
+
+import { motion } from 'motion/react';
 
 function Menu() {
 	const pathRoute = usePathname();
@@ -62,27 +64,43 @@ function Menu() {
 							onClick={() => openSecondLevelMenu(item._id.secondCategory)}
 							key={item._id.secondCategory}>
 							{item._id.secondCategory}
-							{item.isOpened && createThirdLevel(item.pages, path)}
+							{createThirdLevel(item, path)}
 						</li>
 					);
 				})}
 			</ul>
 		);
 	};
-	const createThirdLevel = (pages: PageItem[], path: string) => {
+	const createThirdLevel = (item: MenuItem, path: string) => {
+		const variants = {
+			visible: { transition: { when: 'beforeChildren', staggerChildren: 0.3 } },
+			hidden: {}
+		};
+		const variantsForChildren = {
+			visible: { opacity: 1, height: 'auto' },
+			hidden: { opacity: 0, height: 0 }
+		};
+
 		return (
-			<ul>
-				{pages.map((item) => (
-					<li key={item._id}>
+			<motion.ul
+				layout
+				style={{ overflow: 'hidden' }}
+				variants={variants}>
+				{item.pages.map((page) => (
+					<motion.li
+						key={page._id}
+						variants={variantsForChildren}
+						animate={item.isOpened ? 'visible' : 'hidden'}
+						initial={item.isOpened ? 'visible' : 'hidden'}>
 						<CustomLink
 							className={cn(styles['thirdLevelItem'])}
-							appearance={pathRoute.includes(item.alias) ? 'active' : 'default'}
-							href={`/${path}/${item.alias}`}>
-							<span>{item.category}</span>
+							appearance={pathRoute.includes(page.alias) ? 'active' : 'default'}
+							href={`/${path}/${page.alias}`}>
+							<span>{page.category}</span>
 						</CustomLink>
-					</li>
+					</motion.li>
 				))}
-			</ul>
+			</motion.ul>
 		);
 	};
 

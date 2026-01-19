@@ -10,8 +10,9 @@ export async function generateStaticParams() {
 	}
 }
 
-function Type({ params }: { params: { type: string } }) {
-	return <HTag tag="h1">{params.type}</HTag>;
+async function Type({ params }: { params: Promise<{ type: string }> }) {
+	const { type } = await params;
+	return <HTag tag="h1">{type}</HTag>;
 }
 
 export default Type;
