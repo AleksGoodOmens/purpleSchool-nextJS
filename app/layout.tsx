@@ -1,4 +1,5 @@
 import { getMenu } from '@/api/getMenu';
+import { Up } from '@/components';
 import { AppContextProvider } from '@/context/app.context';
 import { TopLevelCategory } from '@/interfaces';
 import cn from 'classnames';
@@ -28,6 +29,7 @@ export default async function RootLayout({
 					<Aside className={styles.aside} />
 					<main className={styles.main}>{children}</main>
 					<Footer classNames={styles.footer} />
+					<Up />
 				</AppContextProvider>
 			</body>
 		</html>
