@@ -40,6 +40,7 @@ function TopPageProducts({ title, products }: ITopPageProps) {
 			{sortedProducts &&
 				sortedProducts.map((p) => (
 					<Product
+						layout
 						key={p._id}
 						{...p}
 					/>
