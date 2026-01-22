@@ -1,0 +1,38 @@
+.btn {
+	transition: all 0.3s;
+	cursor: pointer;
+
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+
+	border: none;
+	border-radius: 10px;
+	padding: 10px;
+
+	width: 40px;
+
+	height: 40px;
+	font-size: var(--fs-s);
+	text-align: center;
+
+	&:hover,
+	&:active {
+		filter: brightness(0.9);
+	}
+}
+
+.primary {
+	border-color: var(--accent);
+	background-color: var(--accent);
+	color: var(--secondary);
+	& svg {
+		fill: var(--secondary);
+	}
+}
+.secondary {
+	border-color: var(--ghost-200);
+	background-color: var(--secondary);
+	color: var(--primary);
+	& svg {
+		fill: var(--primary);
+	}
+}
