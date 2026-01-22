@@ -5,7 +5,7 @@ import { TopLevelCategory } from '@/interfaces';
 import cn from 'classnames';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
-import { Aside, Footer } from './components';
+import { Aside, Footer, Header } from './components';
 import './globals.scss';
 import styles from './layout.module.scss';
 
@@ -25,7 +25,7 @@ export default async function RootLayout({
 		<html lang="ru">
 			<body className={cn(openSans.className, styles.wrapper)}>
 				<AppContextProvider menu={await getMenu(TopLevelCategory.Courses)}>
-					<header className={styles.header}>header</header>
+					<Header classNames={styles.header} />
 					<Aside className={styles.aside} />
 					<main className={styles.main}>{children}</main>
 					<Footer classNames={styles.footer} />
