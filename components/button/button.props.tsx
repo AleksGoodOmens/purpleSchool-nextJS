@@ -5,11 +5,12 @@ import {
 } from 'react';
 
 export interface ButtonProps
-	extends PropsWithChildren,
+	extends
+		PropsWithChildren,
 		DetailedHTMLProps<
 			ButtonHTMLAttributes<HTMLButtonElement>,
 			HTMLButtonElement
 		> {
-	appearance: 'primary' | 'ghost';
+	appearance: 'primary' | 'ghost' | 'disabled';
 	arrow?: 'right' | 'down';
 }

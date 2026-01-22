@@ -10,10 +10,14 @@ import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import Image from 'next/image';
 
+import { motion } from 'motion/react';
+
 function Review({ ...props }: ReviewProps) {
 	const { title, description, _id, name, rating, updatedAt } = props;
 	return (
-		<div className={styles.wrapper}>
+		<motion.div
+			className={styles.wrapper}
+			layout>
 			<Image
 				src={Avatar}
 				alt="avatar"
@@ -47,7 +51,7 @@ function Review({ ...props }: ReviewProps) {
 				{description}
 			</PTag>
 			<Divider className={styles.divider} />
-		</div>
+		</motion.div>
 	);
 }
 

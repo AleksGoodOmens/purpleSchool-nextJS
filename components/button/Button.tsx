@@ -14,7 +14,8 @@ function Button({
 		<button
 			className={cn(styles['btn'], className, {
 				[styles['ghost']]: appearance === 'ghost',
-				[styles['primary']]: appearance === 'primary'
+				[styles['primary']]: appearance === 'primary',
+				[styles['disabled']]: appearance === 'disabled'
 			})}
 			{...props}>
 			{children}

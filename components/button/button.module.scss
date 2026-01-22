@@ -27,6 +27,10 @@
 	& svg {
 		fill: var(--primary);
 	}
+	&:disabled {
+		cursor: not-allowed;
+		background-color: var(--ghost-400);
+	}
 }
 
 .arrow {

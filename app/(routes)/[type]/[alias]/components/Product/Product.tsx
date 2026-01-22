@@ -1,7 +1,6 @@
 'use client';
 
 import { Card } from '@/components';
-import cn from 'classnames';
 import { motion } from 'motion/react';
 import { ForwardedRef, forwardRef, useRef, useState } from 'react';
 import { AddReview } from '../AddReview/AddReview';
@@ -29,6 +28,11 @@ export const Product = motion(
 			};
 			const { reviews } = props;
 
+			const variants = {
+				visible: { opacity: 1, height: 'auto' },
+				hidden: { opacity: 0, height: 0 }
+			};
+
 			return (
 				<div
 					className={styles.wrapper}
@@ -39,23 +43,27 @@ export const Product = motion(
 						{...props}
 					/>
 					{reviews && (
-						<Card
-							ref={reviewRef}
-							color="dark"
-							className={cn({
-								[styles.open]: isOpenReviews,
-								[styles.close]: !isOpenReviews
-							})}>
-							<>
-								{reviews.map((r) => (
-									<Review
-										key={r._id}
-										{...r}
-									/>
-								))}
-								<AddReview productId={props._id} />
-							</>
-						</Card>
+						<motion.div
+							variants={variants}
+							style={{ overflow: 'hidden' }}
+							layout
+							animate={isOpenReviews ? 'visible' : 'hidden'}
+							initial="hidden">
+							<Card
+								ref={reviewRef}
+								color="dark"
+								className={styles['reviews']}>
+								<>
+									{reviews.map((r) => (
+										<Review
+											key={r._id}
+											{...r}
+										/>
+									))}
+									<AddReview productId={props._id} />
+								</>
+							</Card>
+						</motion.div>
 					)}
 				</div>
 			);

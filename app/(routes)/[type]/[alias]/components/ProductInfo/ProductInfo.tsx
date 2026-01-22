@@ -118,10 +118,11 @@ function ProductInfo({
 			<div className={styles.actions}>
 				<Button appearance="primary">Узнать подробнее</Button>
 				<Button
+					disabled={!Boolean(reviewCount)}
 					onClick={toggleOpen}
 					arrow="right"
 					appearance="ghost">
-					Читать отзывы
+					Читать отзывы {reviewCount}
 				</Button>
 			</div>
 		</Card>
