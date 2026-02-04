@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 import ArrowIconSvg from './arrow.svg';
 import styles from './button.module.scss';
@@ -11,7 +12,8 @@ function Button({
 	...props
 }: ButtonProps) {
 	return (
-		<button
+		<motion.button
+			whileHover={{ scale: 1.1 }}
 			className={cn(styles['btn'], className, {
 				[styles['ghost']]: appearance === 'ghost',
 				[styles['primary']]: appearance === 'primary',
@@ -35,7 +37,7 @@ function Button({
 			) : (
 				''
 			)}
-		</button>
+		</motion.button>
 	);
 }
 

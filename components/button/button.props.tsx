@@ -7,9 +7,12 @@ import {
 export interface ButtonProps
 	extends
 		PropsWithChildren,
-		DetailedHTMLProps<
-			ButtonHTMLAttributes<HTMLButtonElement>,
-			HTMLButtonElement
+		Omit<
+			DetailedHTMLProps<
+				ButtonHTMLAttributes<HTMLButtonElement>,
+				HTMLButtonElement
+			>,
+			'ref' | 'onDrag' | 'onDragEnd' | 'onDragStart' | 'onAnimationStart'
 		> {
 	appearance: 'primary' | 'ghost' | 'disabled';
 	arrow?: 'right' | 'down';
