@@ -4,7 +4,7 @@ import { Menu } from '../../menu/Menu';
 import { Search } from '../../Search/Search';
 import styles from './styles.module.scss';
 
-function Aside({ className }: { className: string }) {
+function Aside({ className }: { className?: string }) {
 	return (
 		<aside className={cn(className, styles['aside'])}>
 			<Logo />

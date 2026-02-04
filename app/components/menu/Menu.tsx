@@ -73,7 +73,9 @@ function Menu() {
 	};
 	const createThirdLevel = (item: MenuItem, path: string) => {
 		const variants = {
-			visible: { transition: { when: 'beforeChildren', staggerChildren: 0.3 } },
+			visible: {
+				transition: { when: 'beforeChildren', staggerChildren: 0.3 }
+			},
 			hidden: {}
 		};
 		const variantsForChildren = {
@@ -84,7 +86,7 @@ function Menu() {
 		return (
 			<motion.ul
 				layout
-				style={{ overflow: 'hidden' }}
+				style={{ overflow: 'hidden', padding: item.isOpened ? '1rem' : 0 }}
 				variants={variants}>
 				{item.pages.map((page) => (
 					<motion.li

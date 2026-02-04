@@ -21,6 +21,7 @@ function TopPageProducts({ title, products }: ITopPageProps) {
 	const setSort = (sort: SortEnum) => {
 		dispatchSort({ type: sort });
 	};
+
 	return (
 		<>
 			<header className={styles['grid']}>

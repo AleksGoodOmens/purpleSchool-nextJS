@@ -21,8 +21,8 @@ function Review({ ...props }: ReviewProps) {
 			<Image
 				src={Avatar}
 				alt="avatar"
-				width={100}
-				height={100}
+				width={40}
+				height={40}
 				className={styles.avatar}
 			/>
 			<PTag
