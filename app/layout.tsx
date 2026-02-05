@@ -6,6 +6,7 @@ import cn from 'classnames';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 import { Aside, Footer, Header } from './components';
+import { ContentLink } from './components/content-link/ContentLink';
 import './globals.scss';
 import styles from './layout.module.scss';
 
@@ -27,7 +28,12 @@ export default async function RootLayout({
 				<AppContextProvider menu={await getMenu(TopLevelCategory.Courses)}>
 					<Header classNames={styles.header} />
 					<Aside className={styles.aside} />
-					<main className={styles.main}>{children}</main>
+					<ContentLink />
+					<main
+						id="content"
+						className={styles.main}>
+						{children}
+					</main>
 					<Footer classNames={styles.footer} />
 					<Up />
 				</AppContextProvider>

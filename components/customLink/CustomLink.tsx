@@ -8,7 +8,8 @@ function CustomLink({
 	target,
 	children,
 	appearance,
-	className
+	className,
+	...rest
 }: CustomLinkProps) {
 	return (
 		<Link
@@ -19,7 +20,8 @@ function CustomLink({
 				[styles['alt']]: appearance === 'alt',
 				[styles['default']]: appearance === 'default'
 			})}
-			href={href as string}>
+			href={href as string}
+			{...rest}>
 			{children}
 		</Link>
 	);

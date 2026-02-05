@@ -1,3 +1,4 @@
+export * from './content-link/ContentLink';
 export * from './footer/Footer';
 export * from './header/Header';
 export * from './menu/Menu';
