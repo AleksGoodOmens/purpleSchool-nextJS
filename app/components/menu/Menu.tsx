@@ -13,7 +13,6 @@ import { motion } from 'motion/react';
 
 function Menu() {
 	const pathRoute = usePathname();
-
 	const { menu, setMenu } = useContext(AppContext);
 
 	const openSecondLevelMenu = (secondCategory: string) => {
@@ -25,12 +24,10 @@ function Menu() {
 				})
 			);
 	};
-
 	const changeCurrentMenu = async (_id: number) => {
 		const newMenu = await getMenu<MenuItem[]>(_id);
 		setMenu && setMenu(newMenu);
 	};
-
 	const createFirstLevel = () => {
 		return (
 			<ul>
@@ -60,10 +57,11 @@ function Menu() {
 
 					return (
 						<li
-							className={cn(styles['secondLevelItem'])}
 							onClick={() => openSecondLevelMenu(item._id.secondCategory)}
 							key={item._id.secondCategory}>
-							{item._id.secondCategory}
+							<button className={cn(styles['secondLevelItem'])}>
+								{item._id.secondCategory}
+							</button>
 							{createThirdLevel(item, path)}
 						</li>
 					);
@@ -86,19 +84,28 @@ function Menu() {
 		return (
 			<motion.ul
 				layout
-				style={{ overflow: 'hidden', padding: item.isOpened ? '1rem' : 0 }}
+				style={{
+					overflow: 'hidden',
+					padding: item.isOpened ? '1rem 0 1rem 1rem' : 0,
+					height: item.isOpened ? 'auto' : 0,
+					display: 'grid',
+					gap: '0.5rem'
+				}}
 				variants={variants}>
 				{item.pages.map((page) => (
 					<motion.li
 						key={page._id}
+						tabIndex={item.isOpened ? -1 : 0}
+						className={cn(styles['thirdLevelItem'])}
 						variants={variantsForChildren}
 						animate={item.isOpened ? 'visible' : 'hidden'}
 						initial={item.isOpened ? 'visible' : 'hidden'}>
 						<CustomLink
-							className={cn(styles['thirdLevelItem'])}
-							appearance={pathRoute.includes(page.alias) ? 'active' : 'default'}
+							appearance={
+								pathRoute.split('/')[2] === page.alias ? 'active' : 'default'
+							}
 							href={`/${path}/${page.alias}`}>
-							<span>{page.category}</span>
+							{page.category}
 						</CustomLink>
 					</motion.li>
 				))}
