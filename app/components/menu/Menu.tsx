@@ -6,7 +6,7 @@ import { firstLevelMenu } from '@/helpers';
 import { MenuItem } from '@/interfaces';
 import cn from 'classnames';
 import { usePathname } from 'next/navigation';
-import { useContext } from 'react';
+import { KeyboardEvent, useContext } from 'react';
 import styles from './styles.module.scss';
 
 import { motion } from 'motion/react';
@@ -23,6 +23,17 @@ function Menu() {
 					return m;
 				})
 			);
+	};
+
+	const openSecondLevelMenuByKey = (
+		key: KeyboardEvent,
+		secondCategory: string
+	) => {
+		if (key.code === 'Space' || key.code === 'Enter') {
+			key.preventDefault();
+
+			openSecondLevelMenu(secondCategory);
+		}
 	};
 	const changeCurrentMenu = async (_id: number) => {
 		const newMenu = await getMenu<MenuItem[]>(_id);
@@ -59,7 +70,11 @@ function Menu() {
 						<li
 							onClick={() => openSecondLevelMenu(item._id.secondCategory)}
 							key={item._id.secondCategory}>
-							<button className={cn(styles['secondLevelItem'])}>
+							<button
+								className={cn(styles['secondLevelItem'])}
+								onKeyDown={(k: KeyboardEvent) =>
+									openSecondLevelMenuByKey(k, item._id.secondCategory)
+								}>
 								{item._id.secondCategory}
 							</button>
 							{createThirdLevel(item, path)}
@@ -95,12 +110,12 @@ function Menu() {
 				{item.pages.map((page) => (
 					<motion.li
 						key={page._id}
-						tabIndex={item.isOpened ? -1 : 0}
 						className={cn(styles['thirdLevelItem'])}
 						variants={variantsForChildren}
 						animate={item.isOpened ? 'visible' : 'hidden'}
 						initial={item.isOpened ? 'visible' : 'hidden'}>
 						<CustomLink
+							tabIndex={item.isOpened ? 0 : -1}
 							appearance={
 								pathRoute.split('/')[2] === page.alias ? 'active' : 'default'
 							}
