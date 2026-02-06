@@ -8,7 +8,6 @@ import Avatar from './avatar.svg';
 
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
-import Image from 'next/image';
 
 import { motion } from 'motion/react';
 
@@ -18,13 +17,7 @@ function Review({ ...props }: ReviewProps) {
 		<motion.div
 			className={styles.wrapper}
 			layout>
-			<Image
-				src={Avatar}
-				alt="avatar"
-				width={40}
-				height={40}
-				className={styles.avatar}
-			/>
+			<Avatar />
 			<PTag
 				className={styles.name}
 				appearance="s">

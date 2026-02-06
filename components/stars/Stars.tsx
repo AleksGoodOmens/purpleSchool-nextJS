@@ -12,7 +12,6 @@ import {
 	useState
 } from 'react';
 import Star from './star.svg';
-import Image from 'next/image';
 
 export const Stars = forwardRef(
 	(
@@ -50,7 +49,7 @@ export const Stars = forwardRef(
 		const constructRating = (r: number) => {
 			const starsArray = stars.map((_, i) => {
 				return (
-					<Image src={Star} alt='star' width={20} height={20}
+					<Star
 						key={i}
 						onMouseEnter={() => onHover(++i)}
 						onMouseLeave={() => onHover(rating)}

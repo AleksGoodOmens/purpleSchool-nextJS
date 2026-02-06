@@ -1,6 +1,5 @@
 'use client';
 import { Button, Input } from '@/components';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { KeyboardEvent, useState } from 'react';
 import SearchIcon from './SearchIcon.svg';
@@ -40,12 +39,7 @@ function Search() {
 				onClick={goToSearch}
 				appearance="primary"
 				className={styles['icon']}>
-				<Image
-					src={SearchIcon}
-					alt="search icon"
-					width={16}
-					height={16}
-				/>
+				<SearchIcon />
 			</Button>
 		</div>
 	);

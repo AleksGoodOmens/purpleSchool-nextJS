@@ -1,10 +1,10 @@
 'use client';
 import { ButtonIcon } from '@/components/buttonIcon/ButtonIcon';
-import { Logo } from '@/components/logo/Logo';
 import cn from 'classnames';
 import { motion } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Logo from '../../../public/icons/logo.svg';
 import { Aside } from '../ui/aside/Aside';
 import styles from './header.module.scss';
 import { HeaderProps } from './header.props';

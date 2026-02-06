@@ -1,6 +1,5 @@
 import cn from 'classnames';
 import { motion } from 'motion/react';
-import Image from 'next/image';
 import ArrowIconSvg from './arrow.svg';
 import styles from './button.module.scss';
 import { ButtonProps } from './button.props';
@@ -27,12 +26,7 @@ function Button({
 						[styles['down']]: arrow === 'down',
 						[styles['right']]: arrow === 'right'
 					})}>
-					<Image
-						src={ArrowIconSvg}
-						width={12}
-						height={12}
-						alt="arrow"
-					/>
+					<ArrowIconSvg />
 				</span>
 			) : (
 				''

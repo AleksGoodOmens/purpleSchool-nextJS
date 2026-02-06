@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import Image from 'next/image';
 import Rate from './rate.svg';
 import styles from './styles.module.scss';
 
@@ -11,12 +10,7 @@ function Rates({ value }: { value: number }) {
 					<span
 						key={i * value}
 						className={cn({ [styles['filled']]: i < value })}>
-						<Image
-							src={Rate}
-							width={50}
-							height={50}
-							alt="rate"
-						/>
+						<Rate />
 					</span>
 				);
 			})}
