@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 import styles from './AddReview.module.scss';
 
-function AddReview({ productId }: AddReviewProps) {
+function AddReview({ productId, isOpenReviews }: AddReviewProps) {
 	const [sended, setSended] = useState(false);
 	const [errorSend, setErrorSend] = useState<string>('');
 
@@ -20,6 +20,7 @@ function AddReview({ productId }: AddReviewProps) {
 	return (
 		<>
 			<ReviewForm
+				isOpenReviews={isOpenReviews}
 				productId={productId}
 				handleSended={handleSended}
 				setErrorSend={setErrorSend}
@@ -32,6 +33,7 @@ function AddReview({ productId }: AddReviewProps) {
 					</PTag>
 					<Button
 						appearance="primary"
+						tabIndex={!isOpenReviews ? 0 : -1}
 						onClick={() => setSended(false)}
 						className={styles['panel__button']}>
 						<CloseIcon />
@@ -46,6 +48,7 @@ function AddReview({ productId }: AddReviewProps) {
 					</PTag>
 					<Button
 						appearance="primary"
+						tabIndex={isOpenReviews ? 0 : -1}
 						onClick={() => setErrorSend('')}
 						className={styles['panel__button']}>
 						<CloseIcon />

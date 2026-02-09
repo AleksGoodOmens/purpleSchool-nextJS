@@ -10,6 +10,7 @@ import styles from './ReviewForm.module.scss';
 
 function ReviewForm({
 	productId,
+	isOpenReviews,
 	handleSended,
 	setErrorSend
 }: ReviewFormProps) {
@@ -19,9 +20,11 @@ function ReviewForm({
 		handleSubmit,
 		reset,
 		formState: { errors }
-	} = useForm<Review>();
+	} = useForm<Review>({
+		defaultValues: { description: '', name: '', rating: undefined, title: '' }
+	});
 
-	const onSubmit = async (formData: ReviewFormProps) => {
+	const onSubmit = async (formData: Review) => {
 		try {
 			const { message } = await sendPost({ ...formData, productId });
 			console.log(message);
@@ -45,6 +48,7 @@ function ReviewForm({
 				className={styles.name}
 				placeholder="Имя"
 				error={errors.name}
+				disabled={!isOpenReviews}
 			/>
 			<Input
 				{...register('title', {
@@ -54,25 +58,8 @@ function ReviewForm({
 				className={styles.title}
 				placeholder="Заголовок отзыва"
 				error={errors.title}
+				disabled={!isOpenReviews}
 			/>
-			<div className={styles.text}>Оценить</div>
-			<Controller
-				control={control}
-				name="rating"
-				rules={{
-					required: { message: 'Ваша оценка?', value: true }
-				}}
-				render={({ field }) => (
-					<Stars
-						isEditable
-						setRating={field.onChange}
-						rating={field.value}
-						error={errors.rating}
-						className={styles.stars}
-					/>
-				)}
-			/>
-
 			<Textarea
 				{...register('description', {
 					required: { message: 'Введите комментарий', value: true },
@@ -85,10 +72,30 @@ function ReviewForm({
 				className={styles.textarea}
 				placeholder="Текст отзыва"
 				error={errors.description}
+				disabled={!isOpenReviews}
 			/>
+			<div className={styles.text}>Оценить</div>
+			<Controller
+				control={control}
+				name="rating"
+				rules={{
+					required: { message: 'Ваша оценка?', value: true }
+				}}
+				render={({ field }) => (
+					<Stars
+						isEditable={isOpenReviews}
+						setRating={field.onChange}
+						rating={field.value || 0}
+						error={errors.rating}
+						className={styles.stars}
+					/>
+				)}
+			/>
+
 			<Button
 				className={styles.button}
 				type="submit"
+				disabled={!isOpenReviews}
 				appearance="primary">
 				Отправить
 			</Button>

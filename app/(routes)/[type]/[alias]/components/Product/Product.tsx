@@ -9,7 +9,7 @@ import { Review } from '../Review/Review';
 import styles from './Product.module.scss';
 import { ProductsProps } from './Product.props';
 
-export const Product = motion(
+export const Product = motion.create(
 	forwardRef(
 		({ ...props }: ProductsProps, ref: ForwardedRef<HTMLDivElement>) => {
 			const [isOpenReviews, setIsOpenReviews] = useState(false);
@@ -25,6 +25,7 @@ export const Product = motion(
 					behavior: 'smooth',
 					block: 'start'
 				});
+				reviewRef.current?.focus();
 			};
 			const { reviews } = props;
 
@@ -42,15 +43,17 @@ export const Product = motion(
 						toggleOpen={toggleOpen}
 						{...props}
 					/>
-					{reviews && (
-						<motion.div
-							variants={variants}
-							style={{ overflow: 'hidden' }}
-							layout
-							animate={isOpenReviews ? 'visible' : 'hidden'}
-							initial="hidden">
+
+					<motion.div
+						variants={variants}
+						style={{ overflow: 'hidden' }}
+						layout
+						ref={reviewRef}
+						tabIndex={isOpenReviews ? 0 : -1}
+						animate={isOpenReviews ? 'visible' : 'hidden'}
+						initial="hidden">
+						{isOpenReviews && (
 							<Card
-								ref={reviewRef}
 								color="dark"
 								className={styles['reviews']}>
 								<>
@@ -60,11 +63,14 @@ export const Product = motion(
 											{...r}
 										/>
 									))}
-									<AddReview productId={props._id} />
+									<AddReview
+										isOpenReviews={isOpenReviews}
+										productId={props._id}
+									/>
 								</>
 							</Card>
-						</motion.div>
-					)}
+						)}
+					</motion.div>
 				</div>
 			);
 		}

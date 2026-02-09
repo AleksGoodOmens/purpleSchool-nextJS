@@ -5,7 +5,6 @@ import styles from './contentLink.module.scss';
 
 export const ContentLink = () => {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
-	console.log(isVisible);
 	const skipMenuAction = (key: KeyboardEvent) => {
 		if (key.code === 'space' || key.code === 'enter') {
 			key.preventDefault();

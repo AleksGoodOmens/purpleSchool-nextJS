@@ -1,12 +1,8 @@
-import {
-	ReviewFormProps,
-	ReviewFormResponse
-} from '@/app/(routes)/[type]/[alias]/components/ReviewForm/ReviewForm.props';
+import { ReviewFormResponse } from '@/app/(routes)/[type]/[alias]/components/ReviewForm/ReviewForm.props';
+import { Review } from '@/interfaces';
 import { PATHS } from '.';
 
-export async function sendPost(
-	data: ReviewFormProps
-): Promise<ReviewFormResponse> {
+export async function sendPost(data: Review): Promise<ReviewFormResponse> {
 	const res = await fetch(PATHS.review.createDemo, {
 		method: 'POST',
 		body: JSON.stringify(data),

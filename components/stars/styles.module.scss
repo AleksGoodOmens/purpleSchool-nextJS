@@ -7,7 +7,9 @@
 		transition: all 0.3s;
 		margin-right: 5px;
 		&.filled {
-			fill: var(--accent);
+			svg {
+				fill: var(--accent);
+			}
 		}
 	}
 }
